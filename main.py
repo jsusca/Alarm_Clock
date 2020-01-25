@@ -31,8 +31,20 @@ while running:
     # Convert current_time into seconds (based on 24 hours)
     current_time_seconds_day = (int(current_time[0]) * 60 * 60) + (int(current_time[1]) * 60) + int(current_time[2])
 
-    # Alarm time in sec - current time in sec = sec to sleep
-    sleep_time = alarm_seconds - current_time_seconds_day
+    # If alarm is set for later today:
+    if alarm_seconds > current_time_seconds_day:
+        # Alarm time in sec - current time in sec = sec to sleep
+        sleep_time = alarm_seconds - current_time_seconds_day
+
+    # If alarm is set for current time, reset program
+    if alarm_seconds == current_time_seconds_day:
+        continue
+
+    # If alarm is set for tomorrow:
+    if alarm_seconds < current_time_seconds_day:
+        sleep_time = (86400 - current_time_seconds_day)
+        sleep_time += alarm_seconds
+
     print(sleep_time)
     print(time.gmtime(sleep_time))
 
