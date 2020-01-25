@@ -13,6 +13,8 @@ while running:
     # Take user input and scrub
     alarm = input("Please enter alarm in the following format: 13:30 hour:minute")
     alarm = re.sub(r'[^:\d]+', '', alarm)
+    if alarm == '':
+        continue
 
     # Split 24h time into hours and minutes
     alarm = alarm.split(':')
