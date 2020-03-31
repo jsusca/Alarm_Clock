@@ -11,7 +11,7 @@ while running:
     video = random.choice(open("videos.txt").read().split())
 
     # Take user input and scrub
-    alarm = input("Please enter alarm in the following format: 13:30 hour:minute")
+    alarm = input("Please enter alarm in the following format: 13:30 hour:minute\n")
     alarm = re.sub(r'[^:\d]+', '', alarm)
     if alarm == '':
         continue
